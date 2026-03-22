@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 import {
   Card, Image, Text, Badge, Group,
   Button, AppShell, Burger, NavLink,
@@ -7,16 +7,10 @@ import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 
 
-const Dashboard = () => {
-  const [items, setItems] = useState([]);
+const Dashboard = ({items}) => {
+  
   const [opened, { toggle }] = useDisclosure();
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setItems(data))
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <AppShell
