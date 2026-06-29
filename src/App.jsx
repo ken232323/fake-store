@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Settings from "./Settings";
+// import Settings from "./Settings";
 import Inventory from "./Inventory";
 import AddProduct from "./AddProduct";
 
@@ -26,7 +26,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard items={items} />} />
-        <Route path="/Settings" element={<Settings />} />
+        {/* <Route path="/Settings" element={<Settings />} /> */}
         <Route path="/Inventory" element={<Inventory />} />
         <Route
           path="/Inventory/AddProduct"

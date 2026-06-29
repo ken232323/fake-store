@@ -15,3 +15,8 @@ export const getCategories = async () => {
     const response = await fetch(`${BASE_URL}/products/categories`);
     return response.json();
 }
+
+export const getAllCart = async () => {
+    const result = await fetch(`${BASE_URL}/carts`);
+    return  result.json();
+}

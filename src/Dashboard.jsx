@@ -12,6 +12,7 @@ import {
   Modal,
   ActionIcon,
   Divider,
+  Drawer
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
@@ -20,7 +21,9 @@ import { IconShoppingCart, IconX } from "@tabler/icons-react";
 
 const Dashboard = () => {
   const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([])
   const [opened, { open, close, toggle }] = useDisclosure(false);
+  const [cartOpened, {open:  openCart, close: closeCart}] = useDisclosure(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
@@ -78,9 +81,13 @@ const Dashboard = () => {
             </p>
           </div>
         </div>
+
+        <div style={{display: "flex", gap: "16px"}}>
+        <IconShoppingCart style={{ color: "white"}} />
         <Text size="sm" c="dimmed">
           {items.length} products
         </Text>
+        </div>
       </AppShell.Header>
 
       <AppShell.Navbar
@@ -322,6 +329,7 @@ const Dashboard = () => {
                       size="md"
                       color="teal"
                       leftSection={<IconShoppingCart size={16} />}
+                      
                     >
                       Add to cart
                     </Button>
@@ -332,6 +340,23 @@ const Dashboard = () => {
           </div>
         )}
       </Modal>
+
+      <Drawer
+        opened = {cartOpened}
+        onClose= {closeCart}
+        position = 'right'
+        size='md'
+        title={
+          <Group>
+            <IconShoppingCart size={18}/>
+            <Text fw={700}>Shopping Cart</Text>
+            {cartItems > 0 && (
+              <Badge>{cartItems}items</Badge>
+            )}
+          </Group>
+        }>
+
+      </Drawer>
     </AppShell>
   );
 };
